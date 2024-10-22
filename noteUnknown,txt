@@ -1,0 +1,9 @@
+10.23.02.30 安裝onnxruntime成功卻警告說有script執行檔不在Path，可能因為我只用conda
+  WARNING: The script humanfriendly.exe is installed in 'C:\Users\plus1\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script coloredlogs.exe is installed in 'C:\Users\plus1\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script onnxruntime_test.exe is installed in 'C:\Users\plus1\AppData\Roaming\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed coloredlogs-15.0.1 flatbuffers-24.3.25 humanfriendly-10.0 onnxruntime-1.19.2 pyreadline3-3.5.4
+
