@@ -1,0 +1,50 @@
+// SBOM Dependency Graph
+digraph {
+	"SPDXRef-npm-antora-collector-extension-1.0.0-alpha.3-7b26ed" [label="@antora/collector-extension
+(頻率: 1)"]
+	"SPDXRef-npm-antora-atlas-extension-1.0.0-alpha.2-d87ce5" [label="@antora/atlas-extension
+(頻率: 1)"]
+	"SPDXRef-npm-asciidoctor-tabs-1.0.0-beta.6-41e328" [label="@asciidoctor/tabs
+(頻率: 1)"]
+	"SPDXRef-npm-springio-asciidoctor-extensions-1.0.0-alpha.10-613322" [label="@springio/asciidoctor-extensions
+(頻率: 1)"]
+	"SPDXRef-npm-antora-3.2.0-alpha.4-c8865b" [label="antora
+(頻率: 1)"]
+	"SPDXRef-npm-springio-antora-extensions-1.14.2-58cb0d" [label="@springio/antora-extensions
+(頻率: 1)"]
+	"SPDXRef-githubactions-actions-checkout-4..-447376" [label="actions/checkout
+(頻率: 1)"]
+	"SPDXRef-githubactions-actions-setup-java-4..-91a7d4" [label="actions/setup-java
+(頻率: 1)"]
+	"SPDXRef-githubactions-spring-io-artifactory-deploy-action-26bbe925a75f4f863e1e529e85be2d0093cac116-892651" [label="spring-io/artifactory-deploy-action
+(頻率: 1)"]
+	"SPDXRef-githubactions-actions-upload-artifact-4..-fc0b53" [label="actions/upload-artifact
+(頻率: 1)"]
+	"SPDXRef-githubactions-gradleactions-setup-gradle-d156388eb19639ec20ade50009f3d199ce1e2808-6ce22e" [label="gradle/actions/setup-gradle
+(頻率: 1)"]
+	"SPDXRef-githubactions-gradleactions-wrapper-validation-d156388eb19639ec20ade50009f3d199ce1e2808-d8263e" [label="gradle/actions/wrapper-validation
+(頻率: 1)"]
+	"SPDXRef-githubactions-actions-checkout-b4ffde65f46336ab88eb53be808477a3936bae11-665fca" [label="actions/checkout
+(頻率: 1)"]
+	"SPDXRef-githubactions-jfrog-setup-jfrog-cli-9fe0f98bd45b19e6e931d457f4e98f8f84461fb5-b58159" [label="jfrog/setup-jfrog-cli
+(頻率: 1)"]
+	"SPDXRef-githubactions-spring-iospring-doc-actions-update-antora-spring-ui-5a57bcc6a0da2a1474136cf29571b277850432bc-2e9f19" [label="spring-io/spring-doc-actions/update-antora-spring-ui
+(頻率: 1)"]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" [label="com.github.spring-projects/spring-framework
+(頻率: 0)"]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-npm-antora-collector-extension-1.0.0-alpha.3-7b26ed" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-npm-antora-atlas-extension-1.0.0-alpha.2-d87ce5" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-npm-asciidoctor-tabs-1.0.0-beta.6-41e328" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-npm-springio-asciidoctor-extensions-1.0.0-alpha.10-613322" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-npm-antora-3.2.0-alpha.4-c8865b" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-npm-springio-antora-extensions-1.14.2-58cb0d" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-actions-checkout-4..-447376" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-actions-setup-java-4..-91a7d4" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-spring-io-artifactory-deploy-action-26bbe925a75f4f863e1e529e85be2d0093cac116-892651" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-actions-upload-artifact-4..-fc0b53" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-gradleactions-setup-gradle-d156388eb19639ec20ade50009f3d199ce1e2808-6ce22e" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-gradleactions-wrapper-validation-d156388eb19639ec20ade50009f3d199ce1e2808-d8263e" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-actions-checkout-b4ffde65f46336ab88eb53be808477a3936bae11-665fca" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-jfrog-setup-jfrog-cli-9fe0f98bd45b19e6e931d457f4e98f8f84461fb5-b58159" [color=black]
+	"SPDXRef-github-spring-projects-spring-framework-main-a7f1db" -> "SPDXRef-githubactions-spring-iospring-doc-actions-update-antora-spring-ui-5a57bcc6a0da2a1474136cf29571b277850432bc-2e9f19" [color=black]
+}

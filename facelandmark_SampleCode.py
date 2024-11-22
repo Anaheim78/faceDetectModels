@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-
 import mediapipe as mp
 from mediapipe import solutions
 from mediapipe.framework.formats import landmark_pb2
@@ -11,18 +10,34 @@ FaceLandmarker = mp.tasks.vision.FaceLandmarker
 FaceLandmarkerOptions = mp.tasks.vision.FaceLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
 
+# 自定義繪圖樣式
+def get_custom_face_mesh_style():
+    return mp.solutions.drawing_styles.DrawingSpec(
+        color=(152, 223, 138),  # 淺綠色
+        thickness=1,
+        circle_radius=1
+    )
+
+def get_custom_face_connections_style():
+    return mp.solutions.drawing_styles.DrawingSpec(
+        color=(194, 220, 243),  # 淺藍色
+        thickness=1
+    )
 
 # 人臉偵測設定
 options = FaceLandmarkerOptions(
     base_options=BaseOptions(model_asset_path='face_landmarker.task'),
     running_mode=VisionRunningMode.IMAGE)
 
-
 # 執行人臉偵測
 with FaceLandmarker.create_from_options(options) as landmarker:
     cap = cv2.VideoCapture(0)               # 讀取攝影鏡頭
     while True:
         ret, frame = cap.read()             # 讀取影片的每一幀
+        if not ret:
+            print("Cannot receive frame")   
+            break
+            
         w = frame.shape[1]                  # 畫面寬度
         h = frame.shape[0]                  # 畫面高度
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame)
@@ -31,45 +46,35 @@ with FaceLandmarker.create_from_options(options) as landmarker:
         face_landmarks_list = face_landmarker_result.face_landmarks
         annotated_image = np.copy(frame)
 
-        # Loop through the detected faces to visualize.
+        # 處理每個偵測到的臉
         for idx in range(len(face_landmarks_list)):
-          face_landmarks = face_landmarks_list[idx]
+            face_landmarks = face_landmarks_list[idx]
 
-          # Draw the face landmarks.
-          face_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
-          face_landmarks_proto.landmark.extend([
-            landmark_pb2.NormalizedLandmark(x=landmark.x, y=landmark.y, z=landmark.z) for landmark in face_landmarks
-          ])
+            # 繪製臉部座標點
+            face_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
+            face_landmarks_proto.landmark.extend([
+                landmark_pb2.NormalizedLandmark(x=landmark.x, y=landmark.y, z=landmark.z) for landmark in face_landmarks
+            ])
 
-        #   solutions.drawing_utils.draw_landmarks(
-        #       image=annotated_image,
-        #       landmark_list=face_landmarks_proto,
-        #       connections=mp.solutions.face_mesh.FACEMESH_TESSELATION,
-        #       landmark_drawing_spec=None,
-        #       connection_drawing_spec=mp.solutions.drawing_styles
-        #       .get_default_face_mesh_tesselation_style())
-          solutions.drawing_utils.draw_landmarks(
-              image=annotated_image,
-              landmark_list=face_landmarks_proto,
-              connections=mp.solutions.face_mesh.FACEMESH_CONTOURS,
-              landmark_drawing_spec=None,
-              connection_drawing_spec=mp.solutions.drawing_styles
-              .get_default_face_mesh_contours_style())
-        #   solutions.drawing_utils.draw_landmarks(
-        #       image=annotated_image,
-        #       landmark_list=face_landmarks_proto,
-        #       connections=mp.solutions.face_mesh.FACEMESH_IRISES,
-        #         landmark_drawing_spec=None,
-        #         connection_drawing_spec=mp.solutions.drawing_styles
-        #         .get_default_face_mesh_iris_connections_style())
+            # 繪製所有臉部網格
+            solutions.drawing_utils.draw_landmarks(
+                image=annotated_image,
+                landmark_list=face_landmarks_proto,
+                connections=mp.solutions.face_mesh.FACEMESH_TESSELATION,
+                landmark_drawing_spec=get_custom_face_mesh_style(),
+                connection_drawing_spec=get_custom_face_connections_style())
 
+            # 繪製臉部輪廓
+            solutions.drawing_utils.draw_landmarks(
+                image=annotated_image,
+                landmark_list=face_landmarks_proto,
+                connections=mp.solutions.face_mesh.FACEMESH_CONTOURS,
+                landmark_drawing_spec=get_custom_face_mesh_style(),
+                connection_drawing_spec=get_custom_face_connections_style())
 
-        #print(face_landmarker_result)
-        if not ret:
-            print("Cannot receive frame")   # 如果讀取錯誤，印出訊息
-            break
-        cv2.imshow('oxxostudio', annotated_image)     # 如果讀取成功，顯示該幀的畫面
+        cv2.imshow('Face Landmarks', annotated_image)
         if cv2.waitKey(10) == ord('q'):     # 每一毫秒更新一次，直到按下 q 結束
             break
-    cap.release()                           # 所有作業都完成後，釋放資源
-    cv2.destroyAllWindows()                 # 結束所有視窗s
+
+    cap.release()
+    cv2.destroyAllWindows()
